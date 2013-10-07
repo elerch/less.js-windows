@@ -23,6 +23,9 @@ Licensed under the Apache 2.0 License.
     var util = {
         readText: function (filename) {
             var stream = WScript.CreateObject("ADODB.Stream"); // this should solve issue with OpenTextFile
+            if (window.outputFileNamesToStdOut) {
+                WScript.StdOut.WriteLine(filename);
+            }
             stream.Charset = 'utf-8';
             stream.Open();
             stream.LoadFromFile(filename);
@@ -117,6 +120,7 @@ Licensed under the Apache 2.0 License.
 
     input = args[0];
     var output = args[1];
+    window.outputFileNamesToStdOut = args.filenames;
 
     if (fso.folderExists(input)) {
         input = fso.getAbsolutePathName(input);
