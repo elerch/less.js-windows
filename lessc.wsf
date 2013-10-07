@@ -168,12 +168,12 @@ Licensed under the Apache 2.0 License.
             data = util.readText(input);
         }
 
-            // SLaks: Make sure LESS can resolve relative import URLs.
-            // LESS.js tries to normalize \ to /, but they forgot that
-            // replace() with a non-regex only replaces the 1st match.
-            // It also tries to detect drive letters but only supports
-            // lowercase.
-            var safeFilename = input.replace(/\\/g, '/').replace(/^[A-Z]+:/, function (m) { return m.toLowerCase(); });
+        // SLaks: Make sure LESS can resolve relative import URLs.
+        // LESS.js tries to normalize \ to /, but they forgot that
+        // replace() with a non-regex only replaces the 1st match.
+        // It also tries to detect drive letters but only supports
+        // lowercase.
+        var safeFilename = input.replace(/\\/g, '/').replace(/^[A-Z]+:/, function (m) { return m.toLowerCase(); });
         var parser = new less.Parser({
                 filename: safeFilename
         });
@@ -199,9 +199,9 @@ Licensed under the Apache 2.0 License.
                             var checkfile = fso.GetFile(output);
                             if (checkfile.Attributes & 1) {
 					       		checkfile.Attributes = checkfile.Attributes ^ 1
-					   }
-				    }
-                            var outputfile = fso.CreateTextFile(output, true, true);	// filename, overwrite, writeUTF16
+    					   }
+    				    }
+                        var outputfile = fso.CreateTextFile(output, true, true);	// filename, overwrite, writeUTF16
                         outputfile.Write(css);
                         outputfile.Close();
                     }
